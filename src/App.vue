@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <VideoPlayer />
   </div>
 </template>
 
 <script>
+import VideoPlayer from './components/VideoPlayer'
+
 export default {
   name: 'App',
+  components: {
+    VideoPlayer
+  }
 };
 </script>
 
