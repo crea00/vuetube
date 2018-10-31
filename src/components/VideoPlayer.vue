@@ -1,5 +1,13 @@
 <template>
   <div class="video-player">
+    <div class="video-container">
+      <iframe width="640" height="360" :src="this.activeVideo.youtubeURL" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <h3>{{this.activeVideo.title}}</h3>
+      <div class="row">
+        <p>{{this.activeVideo.views}} views</p>
+        <p>{{this.activeVideo.likes}} <button>Like</button></p>
+      </div>
+    </div>
     <div class="video-list">
       <div :key="video.id" v-for="video in videos" class="thumbnail">
         <div class="thumbnail-img">
@@ -73,12 +81,58 @@ export default {
   name: 'VideoPlayer',
   data() {
     return {
-      videos
+      videos,
+      activeVideo: videos[0]
     }
   }
 }
 </script>
 
 <style scoped>
+  .thumbnail {
+    display: flex;
+  }
+  
+  .thumbnail img {
+    width: 168px;
+  }
 
+  .thumbnail-info {
+    margin-left: 20px;
+  }
+  
+  .thumbnail h3 {
+    font-size: 16px;
+  }
+
+  h3, p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .thumbnail-views {
+    font-size: 14px;
+  }
+
+  .video-player {
+    display: flex;
+    width: 1200px;
+    margin: auto;
+  }
+
+  .video-container {
+    margin-right: 40px;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  button {
+    background: #D0021B;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+  }
 </style>
